@@ -1,0 +1,38 @@
+#include <stdio.h>
+long long isMersenne(int n)
+{
+    int i;
+    long long result = 1;
+
+    for (jnt i = 1;i <= n;i++)
+        result *= 2;
+
+    return result;
+}
+
+int isPrime(long long x)
+{
+    long long i;
+
+    for (i = 2;i <= x - 1;i++)
+        if (x % i == 0)
+            return 0;
+
+    return 1;
+}
+
+int main(void)
+{
+    long long num, i, value;
+
+    printf("Enter a number: ");
+    scanf("%lld", &num);
+
+    for (i = 2;i <= num;i++)
+    {
+        value = isMersenne(i) - 1;
+
+        if (isPrime(value) == 1)
+            printf("(2 ^ %lld - 1) = %lld은 메르센 소수이다.\n", i, value);
+    }
+}
